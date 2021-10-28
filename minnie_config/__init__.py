@@ -58,9 +58,9 @@ def create_vm(schema: Union[SCHEMAS, str]):
     schema = SCHEMAS(schema)
     
     if schema is SCHEMAS.MINNIE65:
-        schema = str(schema) # Back to str for dj.create_virtual_module
+        schema_name = schema.value # MAKE SURE YOU PASS THE VALUE OF THE ENUM TO dj.create_virtual_module and NOT the ACTUAL ENUM.
         register_externals(externals.stores_config) # This would be the stores_config for a specific schema.
-        vm = dj.create_virtual_module(schema, schema, add_objects=adapters.adapter_objects) # This would be the adapter_objects for a specific schema.
+        vm = dj.create_virtual_module(schema_name, schema_name, add_objects=adapters.adapter_objects) # This would be the adapter_objects for a specific schema.
     else:    
         raise NotImplementedError("Another schema ({schema}) would go here if there were more.")
     
