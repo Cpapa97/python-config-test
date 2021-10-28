@@ -17,7 +17,7 @@ utils.enable_datajoint_flags()
 from enum import Enum
 
 class SCHEMAS(Enum):
-    MINNIE65 = 'minnie65'
+    MINNIE65 = 'microns_minnie65_02'
 
 
 def register_externals(stores_config: dict):
