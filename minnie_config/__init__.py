@@ -38,7 +38,7 @@ def register_adapters(adapter_objects: dict):
     This function might not actually be necessary, but standardization is nice.
     """
     
-    for name, adapter in adapter_objects:
+    for name, adapter in adapter_objects.items():
         globals()[name] = adapter
 
 
