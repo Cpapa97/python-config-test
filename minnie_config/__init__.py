@@ -31,15 +31,22 @@ def register_externals(stores_config: dict):
         dj.config['stores'].update(stores_config)
 
 
-def register_adapters(adapter_objects: dict):
+def register_adapters(adapter_objects: dict, context=None):
     """
     Imports the adapters for a schema into the global namespace.
     
-    This function might not actually be necessary, but standardization is nice.
+    This function is probably not necessary, but standardization is nice.
     """
     
+    if context is None:
+        # if context is missing, use the calling namespace
+        import inspect
+        frame = inspect.currentframe().f_back
+        context = frame.f_locals
+        del frame
+    
     for name, adapter in adapter_objects.items():
-        globals()[name] = adapter
+        context[name] = adapter
 
 
 # Typing annotation hints not strictly necessary. This import is also not necessary if you only specify one type.
