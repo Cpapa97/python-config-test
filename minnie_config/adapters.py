@@ -200,6 +200,9 @@ class DecompositionAdapter(dj.AttributeAdapter):
         """
         return filepath
 
+
+# IMPORTANT: The adapter_objects dict must have the same names as keys as the actual adapters used in the table definitions (same for the instantiations of the adapters below, but that part only matters when they're imported standalone into the global namespace).
+
 # instantiate for use as a datajoint type
 mesh = MeshAdapter('filepath@meshes')
 decimated_mesh = DecimatedMeshAdapter('filepath@decimated_meshes')
